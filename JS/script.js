@@ -34,7 +34,6 @@ function div(a, b) {
   return a / b;
 }
 function operator(op, a, b) {
-  console.log(op);
   switch (op) {
     case "":
     case "=":

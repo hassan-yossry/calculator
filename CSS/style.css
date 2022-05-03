@@ -1,26 +1,30 @@
 .calculator {
   display: grid;
+  border-radius: 10px;
   width: 45vw;
   height: 45vh;
   padding: 8px;
-  border: red solid;
+  background-color: black;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: 2fr repeat(5, 1fr);
   gap: 8px;
 }
 .calculator div {
   display: flex;
+  border-radius: 10px;
   justify-content: center;
   align-items: center;
   background-color: grey;
 }
 div.output {
+  border-radius: 10px;
+  font-size: xx-large;
   padding: 16px;
   display: flex;
   justify-content: flex-end;
   align-items: flex-end;
   grid-column: 1 / 5;
-  background-color: blue;
+  background-color: bisque;
 }
 
 div.err {
