@@ -34,6 +34,7 @@ function div(a, b) {
   return a / b;
 }
 function operator(op, a, b) {
+  console.log(op);
   switch (op) {
     case "":
     case "=":
@@ -52,7 +53,7 @@ function operator(op, a, b) {
       return mult(a, b);
     case "/":
       return div(a, b);
-    case "-/+":
+    case "\u00B1":
       return -b;
     case "clr":
       return 0;
@@ -80,7 +81,7 @@ const op1Listener = (evt) => {
 };
 const opInListener = (evt) => {
   if (input === "") input = res;
-  input = operator(evt.target.innerHTML, input, input);
+  input = operator(evt.target.textContent, input, input);
   output.innerHTML = input;
 };
 
