@@ -99,7 +99,7 @@ document.querySelectorAll(".op1").forEach((itm) => {
 });
 
 document.querySelectorAll(".in").forEach((itm) => {
-  itm.addEventListener("click", op1Listener);
+  itm.addEventListener("click", opInListener);
 });
 
 document.querySelector(".calculator").addEventListener(
