@@ -3,11 +3,14 @@ let prev = "0",
 let res = 0;
 let currOp = "";
 let sgn = 1;
-const output = document.querySelector(".output");
+let errFlg = false;
+
+const output = document.querySelector(".output span");
+const errElm = document.querySelector(".err");
+
 function add(a, b) {
   return +a + +b;
 }
-let errFlg = false;
 
 const err = function (msg) {
   errFlg = true;
