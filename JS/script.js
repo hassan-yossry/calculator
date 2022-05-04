@@ -144,6 +144,7 @@ document.querySelector(".bck").addEventListener("click", () => {
   if (input !== "") {
     const last = input.slice(-1);
     input = input.slice(0, -1);
+    if (isNaN(+input)) input = "";
     document.querySelector(".output span").innerHTML = input || "0";
     if (last === ".") {
       dotFlg = true;
