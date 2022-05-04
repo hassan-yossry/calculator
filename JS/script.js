@@ -1,9 +1,11 @@
 let prev = "0",
   input = "";
-let res = 0;
+let res = "0";
 let currOp = "";
 let sgn = 1;
+
 let errFlg = false;
+let dotFlg = true;
 
 const output = document.querySelector(".output span");
 const errElm = document.querySelector(".err");
@@ -58,14 +60,28 @@ function operator(op, a, b) {
       return 0;
   }
 }
+
+const enableDot = () => {
+  if (!dotFlg) {
+    btn = document.querySelector(".dot");
+    dotFlg = true;
+    btn.backgrounColor = "white";
+  }
+};
 const op2Listener = (evt) => {
   if (input === "") {
+    if (currOp && currOp !== evt.target.textContent) {
+      currOp = evt.target.textContent;
+      return;
+    }
     input = res;
   }
   res = operator(currOp, res, input + "") + "";
   currOp = evt.target.textContent;
   input = "";
   output.innerHTML = res;
+
+  enableDot();
 };
 
 const op1Listener = (evt) => {
@@ -77,6 +93,8 @@ const op1Listener = (evt) => {
   currOp = "";
   input = "";
   output.innerHTML = res;
+
+  enableDot();
 };
 const opInListener = (evt) => {
   if (input === "") input = res;
@@ -86,6 +104,7 @@ const opInListener = (evt) => {
 
 const nmListener = (evt) => {
   input += evt.target.textContent;
+  if (input.length >= 2 && input[0] == "0") input = input.substring(1);
   output.innerHTML = input;
 };
 
@@ -112,3 +131,22 @@ document.querySelector(".calculator").addEventListener(
   },
   true
 );
+
+document.querySelector(".dot").addEventListener("click", (e) => {
+  if (dotFlg) {
+    nmListener(e);
+  }
+  dotFlg = false;
+});
+
+document.querySelector(".bck").addEventListener("click", () => {
+  if (input === "") input = res;
+  if (input !== "") {
+    const last = input.slice(-1);
+    input = input.slice(0, -1);
+    document.querySelector(".output span").innerHTML = input || "0";
+    if (last === ".") {
+      dotFlg = true;
+    }
+  }
+});
